@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>hello</h1>
+    <canvas id="mycanvas"></canvas>
+
+    <script>
+        let img = new Image();
+        img.src = "./nitin.jpg";
+        var canvas = document.getElementById('mycanvas');
+        console.log("canvas", canvas);
+        if (canvas.getContext) {
+            var ctx = canvas.getContext('2d');
+        }
+        img.onload = ("load", () => {
+            canvas.height = img.height;
+            canvas.width = img.width;
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            var save = canvas.toDataURL("image/png");
+            console.log(save);
+            
+
+        })
+    </script>
+</body>
+
+</html>
