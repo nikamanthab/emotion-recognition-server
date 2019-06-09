@@ -9,7 +9,7 @@ const client = new vision.ImageAnnotatorClient({
     keyFilename: 'APIkey.json'
 });
 
-
+var value = 2.5;
 
 app.use(bodyParser.urlencoded({
     parameterLimit: 100000,
@@ -21,6 +21,10 @@ app.use(bodyParser.json({
     limit: '50mb',
     extended: true
 }));
+
+app.get('/getval',(req,res)=>{
+    res.send({val:value});
+})
 
 app.post('/app', (req, res) => {
     // console.log(req.body.image);
@@ -78,7 +82,7 @@ app.post('/app', (req, res) => {
                 let weight = weightjoy-weightanger-weightsorrow+weightsurprise;
 
                 let rating = ((weight+8)/16)*5;
-
+                value = rating;
                 console.log(rating);
                 
                 
